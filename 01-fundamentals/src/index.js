@@ -1,63 +1,19 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import books from "./books";
+import Book from "./Book";
 import "./index.css";
 
-const books = [
-  {
-    id: 1,
-    img: "./images/book-1.jpg",
-    title: "Interesting Facts For Curious Minds",
-    author: "Jordan Moore",
-  },
-  {
-    id: 2,
-    img: "./images/book-2.jpg",
-    title: "Atomic Habits",
-    author: "John Clear",
-  },
-  {
-    id: 3,
-    img: "./images/book-3.jpg",
-    title: "Fairy Tale",
-    author: "Stephen King",
-  },
-];
-
 const Booklist = () => {
-  const getBook = (id) => {
-    const book = books.find((book) => book.id === id);
-    console.log(book.title);
-  };
   return (
-    <section className="booklist">
-      {books.map((book) => {
-        return <Book {...book} key={book.id} getBook={getBook} />;
-      })}
-    </section>
-  );
-};
-
-const Book = ({ id, img, title, author, getBook }) => {
-  // wrapper which invokes the function from the parent
-  const getSingleBook = () => {
-    getBook(id);
-  };
-  return (
-    <article className="book">
-      <img src={img} alt={title} />
-      <h2>{title}</h2>
-      {/* invoke the function in an anonymous callback func */}
-      <button
-        onClick={() => {
-          getBook(id);
-        }}
-      >
-        click me
-      </button>
-      {/* reference the function wrapper */}
-      <button onClick={getSingleBook}>click me</button>
-      <h4>{author}</h4>
-    </article>
+    <>
+      <h1>Amazon Best Sellers</h1>
+      <section className="booklist">
+        {books.map((book, index) => {
+          return <Book {...book} number={index} key={book.id} />;
+        })}
+      </section>
+    </>
   );
 };
 
