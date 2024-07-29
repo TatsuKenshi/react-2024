@@ -1,13 +1,13 @@
-import { Test } from "./Test";
-import Starter from "./tutorial/04-project-structure/starter/navbar";
-import Example from "./tutorial/04-project-structure/starter/example";
+import Starter from "./tutorial/06-forms/starter/01-controlled-inputs";
+// import Starter from "./tutorial/06-forms/starter/02-user-challenge";
+// import Starter from "./tutorial/06-forms/starter/03-multiple-inputs";
+// import Starter from "./tutorial/06-forms/starter/04-other-inputs";
+// import Starter from "./tutorial/06-forms/starter/05-form-data";
 
 function App() {
   return (
     <div className="container">
-      {/* <Starter /> */}
-      <Example />
-      <Test />
+      <Starter />
     </div>
   );
 }
