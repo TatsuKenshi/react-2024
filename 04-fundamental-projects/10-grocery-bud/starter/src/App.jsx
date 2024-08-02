@@ -108,13 +108,10 @@ const App = () => {
       </h2>
       <Form
         isRename={isRename}
-        // setIsRename={setIsRename}
         editID={editID}
-        // setEditID={setEditID}
         itemName={itemName}
         setItemName={setItemName}
         newName={newName}
-        // setNewName={setNewName}
         addItem={addItem}
         renameItem={renameItem}
       />
