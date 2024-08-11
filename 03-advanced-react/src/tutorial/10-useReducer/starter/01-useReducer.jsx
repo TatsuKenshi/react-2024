@@ -1,20 +1,33 @@
-import React from "react";
+import React, { useReducer } from "react";
+import { REMOVE_ITEM, RESET_LIST, CLEAR_LIST } from "./actions";
+import { reducer } from "./reducer";
 import { data } from "../../../data";
-const ReducerBasics = () => {
-  const [people, setPeople] = React.useState(data);
 
+// default state
+export const defaultState = {
+  people: data,
+  isLoading: false,
+};
+
+const ReducerBasics = () => {
+  const [state, dispatch] = useReducer(reducer, defaultState);
+
+  // dispatch functions
   const removeItem = (id) => {
-    let newPeople = people.filter((person) => person.id !== id);
-    setPeople(newPeople);
+    dispatch({ type: REMOVE_ITEM, payload: { id } });
+  };
+
+  const clearList = () => {
+    dispatch({ type: CLEAR_LIST });
   };
 
   const resetList = () => {
-    setPeople(data);
+    dispatch({ type: RESET_LIST });
   };
 
   return (
     <div>
-      {people.map((person) => {
+      {state.people.map((person) => {
         const { id, name } = person;
         return (
           <div key={id} className="item">
@@ -23,7 +36,7 @@ const ReducerBasics = () => {
           </div>
         );
       })}
-      {people.length < 1 ? (
+      {state.people.length < 1 ? (
         <button
           className="btn"
           style={{ marginTop: "2rem" }}
@@ -35,7 +48,7 @@ const ReducerBasics = () => {
         <button
           className="btn"
           style={{ marginTop: "2rem" }}
-          onClick={() => setPeople([])}
+          onClick={clearList}
         >
           clear items
         </button>
@@ -45,3 +58,5 @@ const ReducerBasics = () => {
 };
 
 export default ReducerBasics;
+
+// the man difference between useState and useReducer, is that the setState function changes the state directly, while the dispatch action does not.
