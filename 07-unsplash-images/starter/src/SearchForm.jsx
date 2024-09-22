@@ -1,9 +1,6 @@
 import React from "react";
 import { useGlobalContext } from "./context/context";
 
-const public_key = "4FrN6M6NCX-LEqjNitXf9xRe6NpU_P4TZjVsscO62_E";
-const secret_key = "wR_sjVMasfRi-Y7WHFzKXtdlOjbWTCChnclQclIrcVI";
-
 const SearchForm = () => {
   const { setSearchTerm } = useGlobalContext();
   const handleSubmit = (e) => {
